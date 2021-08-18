@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nes-core.min.css">
+    <title>Paper Plane</title>
+</head>
+<body>
+   
+   <div id="nerd_info" class="nes-text is-primary">
+       glider speed:
+       <div id="speedx">
+           0
+       </div>
+       lift speed:
+       <div id="speedy">
+           0
+       </div>
+       elevation:
+       <div id="lift">
+           0
+       </div>
+       <div id="accy">
+           0
+       </div>
+   </div>
+   <div id="dashboard" class="nes-container with-title">
+    <p class="title">Dashboard</p>
+       <div id="speed_info">
+            Glider Speed
+            <div id="speed_x">
+                X: <span id="speedX">0</span> m/s
+            </div>
+            <div id="speed_y">
+                Y: <span id="speedY">0</span> m/s
+            </div>
+       </div>
+       <div id="elevation_info">
+           Elevation info:
+           <span id="elevation">0</span> m
+           <br>
+           Status: <span id="del_elev">N/A</span>
+       </div>
+       <div id="other_info">
+           Tilt: <span id="turn">N/A</span>
+           <br>
+           Info: <span id="status">N/A</span>
+       </div>
+   </div>
+   <canvas id="canvas"></canvas>
+</body>
+<script src="final.js"></script>
+</html>

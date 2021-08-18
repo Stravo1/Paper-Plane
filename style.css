@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+#canvas {
+   background-color: antiquewhite;    
+    
+}
+#nerd_info{
+    position: fixed;
+    font-size: 10px;
+    background-color: aquamarine;
+    padding: 1rem;
+    margin: 1rem;
+    display: none;
+}
+
+#dashboard {
+    background-color: cadetblue;
+    position: fixed;
+    bottom: 0;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-rows: 0.1fr 1fr 1fr;
+    font-size: 12px;
+    padding: 1rem;
+    
+}
+#dashboard #label{
+    grid-column: 1/3;
+    grid-row: 1;
+    text-align: center;
+}
+#speed_info {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#elevation_info{
+    grid-column: 2;
+    grid-row: 2;
+}
+#other_info{
+    grid-column: 1/3;
+    grid-row: 3;
+    align-self: center;
+}
