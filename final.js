@@ -4,7 +4,10 @@ const glider = {
     Area_l: 14,
     Area_d: 2,
 };
-
+const glide = {
+  1: 0.0005,
+  2: 1,
+}
 const status = {
     turn: null,
     aerial: false,
@@ -76,13 +79,13 @@ const motion_x = () => {
 }
 
 const glide_motion = () => {
-    var acc_glide = 0.0001*Math.abs(v_y)
+    var acc_glide = glide[1]*Math.abs(v_y)
     console.log("gliding")
     v_p_x += acc_glide*del_time
 }
 
 const motion_y = () => {
-    var acc_y = (0.5*glider.C_l*density*v_p_x*v_p_x*glider.Area_l - (elv > 0 ? 0.5*glider.C_d*density*Math.abs(v_p_y)*v_p_y*glider.Area_l + 750 : 0))/75
+    var acc_y = (0.5*glider.C_l*density*v_p_x*v_p_x*glider.Area_l - (elv > 0 ? 0.5*glider.C_d*density*Math.abs(v_p_y)*v_p_y*glider.Area_l + 750*glide[2] : 0))/75
         //console.log(dist, acc_y,"gg", v_p_x)
     //console.log("ggg", v_p_y, acc_y, "kk");
     v_y = v_p_y + acc_y*del_time
@@ -135,7 +138,33 @@ const setUpOrientationSense = () => {
     window.addEventListener("deviceorientation", handleOrientation, true);
 }
 const handleOrientation = (event) => {
-    console.log(event)
+    //console.log(event.alpha, event.beta, event.gamma)
+    var h = '';
+    if (event.gamma < -10 && event.gamma > -25) h = "left"
+    else if (event.gamma < -25) h = "hard left"
+    else if (event.gamma > 10 && event.gamma < 25) h = "right"
+    else if (event.gamma > 25) h = "hard right"
+    else h = "no tilt"
+    if(event.beta < -5) {
+      h += " up";
+      glide[1] = 1.25
+    }
+    else if (event.beta > 25 && event.beta < 45) {
+      h += " down";
+      glide[1] = 0.07;
+      glide[2] = 1
+    }
+    else if (event.beta > 45){
+      h += " hard down";
+      glide[1] = 0.0005;
+      glide[2] = 5
+    }
+    else {
+      h += " no tilt";
+      glide[1] = 0.75;
+      glide[2] = 1;
+    }
+    document.getElementById('turn').innerHTML = h
 }
 const setUpAll = () => {
     setUpInfiniteScroll()

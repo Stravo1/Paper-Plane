@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-#canvas {
-   background-color: antiquewhite;    
-    
-}
 #nerd_info{
     position: fixed;
     font-size: 10px;
