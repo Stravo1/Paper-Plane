@@ -9,8 +9,35 @@
     <title>Paper Plane</title>
 </head>
 <body>
+    <section id="i">
+        <button type="button" class="nes-btn is-primary" onclick="document.getElementById('dialog-rounded').showModal();">
+          i
+        </button>
+        <dialog class="nes-dialog is-rounded" id="dialog-rounded">
+          <form method="dialog">
+            <p class="title">Instruction</p>
+            <p class="msg">Scroll to provide thrust/lift <br> Tilt left/right to maneuver <br> Tilt down to deccelerate</p>
+            <menu class="dialog-menu">
+              <button class="nes-btn">OK</button>
+            </menu>
+          </form>
+        </dialog>
+    </section>
+    <!--
+        <section class="message-list" id="info_fun">
+          <section class="message -left">
+            <i class="nes-bcrikko"></i>
+            <div class="nes-balloon from-left">
+              <p class="msg">Hello NES.css</p>
+            </div>
+          </section>
+        </section>
+    -->
    <div id="plane_holder">
-       <img src="planeS.svg" alt="plane_img" srcset="" id="plane">
+       <img src="assets/planeS.svg" alt="plane_img" srcset="" id="plane">
+   </div>
+   <div id="shadow_holder">
+       <img src="assets/shadow.svg" alt="" srcset="" id="shadow">
    </div>
    <div id="nerd_info" class="nes-text is-primary">
        glider speed:
@@ -32,7 +59,7 @@
    <div id="dashboard" class="nes-container with-title">
     <p class="title">Dashboard</p>
        <div id="speed_info">
-            Glider Speed
+            <u>Speed info:</u>
             <div id="speed_x">
                 X: <span id="speedX">0</span> m/s
             </div>
@@ -41,20 +68,18 @@
             </div>
        </div>
        <div id="elevation_info">
-           Elevation info:
+           <u>Elevation:</u>
            <span id="elevation">0</span> m
            <br>
-           Status: <span id="del_elev">N/A</span>
+           <span id="del_elev">N/A</span>
        </div>
+       <br>
        <div id="other_info">
            Tilt: <span id="turn">N/A</span>
            <br>
            Info: <span id="status">N/A</span>
        </div>
    </div>
-   Scroll Down For Thrust
-   <br />
-   Tilt to maneuver
    <canvas id="canvas"></canvas>
 </body>
 <script src="final.js"></script>

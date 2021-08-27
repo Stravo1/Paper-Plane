@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="200px" width="200px">
+  <defs>
+    <pattern id="doodad" width="86.6" height="75" viewBox="0 0 34.64101615137755 30" patternUnits="userSpaceOnUse" patternTransform="">
+      <rect width="100%" height="100%" fill="rgba(44, 122, 123,1)"/>
+      <path d="M-20-20h200v200h-200M32.04 26.5L25.98 23L19.92 26.5L19.92 33.5L25.98 37L32.04 33.5zM14.72 26.5L8.66 23L2.6 26.5L2.6 33.5L8.66 37L14.72 33.5zM6.06 11.5L0 8L-6.06 11.5L-6.06 18.5L0 22L6.06 18.5zM14.72-3.5L8.66-7L2.6-3.5L2.6 3.5L8.66 7L14.72 3.5zM32.04-3.5L25.98-7L19.92-3.5L19.92 3.5L25.98 7L32.04 3.5zM40.7 11.5L34.64 8L28.58 11.5L28.58 18.5L34.64 22L40.7 18.5zM23.38 11.5L17.32 8L11.26 11.5L11.26 18.5L17.32 22L23.38 18.5z" fill="rgba(56, 161, 105,1)" filter="url(#filter-doodad-1)"/>
+      <path d="M-20-20h200v200h-200M21.18 27L15.98 24L10.78 27L10.78 33L15.98 36L21.18 33zM3.86 27L-1.34 24L-6.54 27L-6.54 33L-1.34 36L3.86 33zM-4.8 12L-10 9L-15.2 12L-15.2 18L-10 21L-4.8 18zM3.86-3L-1.34-6L-6.54-3L-6.54 3L-1.34 6L3.86 3zM21.18-3L15.98-6L10.78-3L10.78 3L15.98 6L21.18 3zM29.84 12L24.64 9L19.44 12L19.44 18L24.64 21L29.84 18zM38.5 27L33.3 24L28.1 27L28.1 33L33.3 36L38.5 33zM12.52 42L7.32 39L2.12 42L2.12 48L7.32 51L12.52 48zM-13.46 27L-18.66 24L-23.86 27L-23.86 33L-18.66 36L-13.46 33zM-13.46-3L-18.66-6L-23.86-3L-23.86 3L-18.66 6L-13.46 3zM12.52-18L7.32-21L2.12-18L2.12-12L7.32-9L12.52-12zM38.5-3L33.3-6L28.1-3L28.1 3L33.3 6L38.5 3zM29.84 42L24.64 39L19.44 42L19.44 48L24.64 51L29.84 48zM-4.8 42L-10 39L-15.2 42L-15.2 48L-10 51L-4.8 48zM-22.12 12L-27.32 9L-32.52 12L-32.52 18L-27.32 21L-22.12 18zM-4.8-18L-10-21L-15.2-18L-15.2-12L-10-9L-4.8-12zM29.84-18L24.64-21L19.44-18L19.44-12L24.64-9L29.84-12zM47.16 12L41.96 9L36.76 12L36.76 18L41.96 21L47.16 18zM12.52 12L7.32 9L2.12 12L2.12 18L7.32 21L12.52 18z" fill="rgba(104, 211, 145,1)" filter="url(#filter-doodad-2)"/>
+    </pattern>
+    <filter id="filter-doodad-1">
+      <feTurbulence baseFrequency="0.5 0.01" numOctaves="2" result="result1"/>
+      <feDisplacementMap in2="result1" scale="12" result="result2" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic"/>
+      <feComposite in2="result2" in="SourceGraphic" operator="atop" result="compositeGraphic"/>
+      <feOffset in="compositeGraphic" result="fbSourceGraphic" dy="-1.2"/>
+    </filter>
+    <filter id="filter-doodad-2">
+      <feTurbulence baseFrequency="0.15 0.01" numOctaves="2" result="result1"/>
+      <feDisplacementMap in2="result1" scale="13" result="result2" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic"/>
+      <feComposite in2="result2" in="SourceGraphic" operator="atop" result="compositeGraphic"/>
+      <feOffset in="compositeGraphic" result="fbSourceGraphic" dy="-1.3"/>
+    </filter>
+  </defs>
+  <rect fill="url(#doodad)" height="200%" width="200%"/>
+</svg>

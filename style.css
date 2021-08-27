@@ -1,23 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-<<<<<<< HEAD
+#i{
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+}
+#info_fun{
+    position: fixed;
+    top: 0.5rem;
+}
+.msg{
+    font-size: small;
+}
 #canvas {
-   background-color: antiquewhite;    
+   /*background-color: antiquewhite;*/   
     
 }
 #plane_holder{
     position: fixed;
     top: 50vh;
+    z-index: 10;
     display: flex;
     width: 100vw;
     justify-content: center;
 }
 #plane{
-    height: 10vh;
+    height: 15vh;
 
 }
-=======
->>>>>>> ae8d07420e5770588f32dd9e8cc3b4ee11826251
+#shadow_holder{
+    z-index: 1;
+    position: fixed;
+    top: 47vh;
+    display: none;
+    width: 100vw;
+    justify-content: center;
+}
+#shadow{
+    height: 20vh;
+
+}
 #nerd_info{
     position: fixed;
     font-size: 10px;

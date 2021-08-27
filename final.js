@@ -17,11 +17,13 @@ const status = {
     elv_ch: null,
 }
 
-const del_time = 0.05*3, density = 1.225, friction_coeff = 0.25;
+const del_time = 0.05*4, density = 1.225, friction_coeff = 0.25;
 var v_p_x = elv = elv_p = v_x = v_y = scroll_speed = 0;
 var v_p_y = 0
 
 var plane = document.getElementById('plane');
+var shadow = document.getElementById('shadow');
+
 //plane.src = 'planeA.svg'
 
 const setUpInfiniteScroll = () => {
@@ -50,6 +52,7 @@ const startGlider = () => {
         motion_y();
         dashboard_updt();
         plane_updt();
+        shadow_updt();
     }, 50*2);
 }
 
@@ -137,11 +140,12 @@ const del_elev = () => {
 }
 const info = () => {
     var result = '';
-    if (!scroll_speed) result+="No thrust | "
-    else result+="Thrust = "+ JSON.stringify(scroll_speed+750) +" | "
+    
     if (elv && !status.glide) result+="Airborne | "
     else if (elv && status.glide) result += "Airborne and Glidding | "
     else result+=" On ground | "
+    if (!scroll_speed) result+="No thrust | "
+    else result+="Thrust = "+ JSON.stringify(scroll_speed+750) +" | "
     return result;
 }
 const setUpOrientationSense = () => {
@@ -167,25 +171,25 @@ const handleOrientation = (event) => {
       status.turn = "hr";
     }
     else {
-      h = "no tilt";
+      h = "no h-tilt";
       status.turn = "n";
     }
     if(event.beta < -5) {
-      h += " up";
+      h += " | up";
       glide[1] = 1.25
     }
     else if (event.beta > 25 && event.beta < 45) {
-      h += " down";
+      h += "| down";
       glide[1] = 0.07;
       glide[2] = 1
     }
     else if (event.beta > 45){
-      h += " hard down";
+      h += " | hard down";
       glide[1] = 0.0005;
       glide[2] = 5
     }
     else {
-      h += " no tilt";
+      h += " | no v-tilt";
       glide[1] = 0.75;
       glide[2] = 1;
     }
@@ -195,37 +199,48 @@ const handleOrientation = (event) => {
 function plane_updt() {
   if(status.elv_ch == "a"){
     if(status.turn == "r"){
-      plane.src = "planeA_l.svg";
+      plane.src = "assets/planeA_r.svg";
     }
     else if(status.turn == "hl"){
-      plane.src = "planeA_hr.svg"
+      plane.src = "assets/planeA_hl.svg"
     }
     else if (status.turn == "hr") {
-      plane.src = "planeA_hl.svg";
+      plane.src = "assets/planeA_hr.svg";
     }
     else if (status.turn == "l") {
-      plane.src = "planeA_r.svg"
+      plane.src = "assets/planeA_l.svg"
     }
-    else plane.src = "planeA.svg"
+    else plane.src = "assets/planeA.svg"
   }
   else if (status.elv_ch == "d"){
     if(status.turn == "r"){
-      plane.src = "planeD_r.svg";
+      plane.src = "assets/planeD_r.svg";
     }
     else if(status.turn == "hl"){
-      plane.src = "planeD_hl.svg"
+      plane.src = "assets/planeD_hl.svg"
     }
     else if (status.turn == "hr") {
-      plane.src = "planeD_hr.svg";
+      plane.src = "assets/planeD_hr.svg";
     }
     else if (status.turn == "l") {
-      plane.src = "planeD_l.svg"
+      plane.src = "assets/planeD_l.svg"
     }
-    else plane.src = "planeD.svg"
+    else plane.src = "assets/planeD.svg"
   }
   else {
-    plane.src = "planeS.svg"
+    plane.src = "assets/planeS.svg"
   }
+}
+function shadow_updt(){
+    if(elv>300) shadow.src = 'assets/shadow5.svg'
+    else if(elv>200) shadow.src = 'assets/shadow5.svg'
+    else if(elv>150) shadow.src = 'assets/shadow4.svg'
+    else if(elv>100) shadow.src = 'assets/shadow3.svg'
+    else if(elv>50) shadow.src = 'assets/shadow2.svg'
+    else if(elv>20) shadow.src = 'assets/shadow1.svg'
+    else if(v_x>10) shadow.src ="assets/shadow2.svg"
+    else if(v_x>5) shadow.src = "assets/shadow1.svg"
+    else shadow.src = 'assets/shadow.svg'
 }
 const setUpAll = () => {
     setUpInfiniteScroll()
