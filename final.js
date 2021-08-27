@@ -17,7 +17,7 @@ const status = {
     elv_ch: null,
 }
 
-const del_time = 0.05*2, density = 1.225, friction_coeff = 0.25;
+const del_time = 0.05*3, density = 1.225, friction_coeff = 0.25;
 var v_p_x = elv = elv_p = v_x = v_y = scroll_speed = 0;
 var v_p_y = 0
 
@@ -49,6 +49,7 @@ const startGlider = () => {
         motion_x();
         motion_y();
         dashboard_updt();
+        plane_updt();
     }, 50*2);
 }
 
@@ -104,9 +105,9 @@ const motion_y = () => {
 
 const dashboard_updt = () => {
     //console.log(v_x,v_y)
-    document.getElementById('speedX').innerHTML = v_x.toFixed(2);
-    document.getElementById('speedY').innerHTML = v_y.toFixed(2);
-    document.getElementById('elevation').innerHTML = elv.toFixed(2);
+    document.getElementById('speedX').innerHTML = v_x.toFixed(1);
+    document.getElementById('speedY').innerHTML = v_y.toFixed(1);
+    document.getElementById('elevation').innerHTML = elv.toFixed(1);
     document.getElementById('del_elev').innerHTML = del_elev();
     document.getElementById('status').innerHTML = info();
 
@@ -124,14 +125,14 @@ const del_elev = () => {
     var elv_pt = elv_p
     elv_p = elv
     if (elv_pt < elv) {
-        plane.src = 'planeA.svg'
-        return 'Ascending'
+        status.elv_ch = "a";
+        return 'Ascending';
     }
     else if (elv_pt > elv) {
-        plane.src = 'planeD.svg'
-        return 'Descending'
+       status.elv_ch = "d";
+        return 'Descending';
     }
-    plane.src = 'planeS.svg'
+    status.elv_ch ="f";
     return "Alt. fixed"
 }
 const info = () => {
@@ -149,11 +150,26 @@ const setUpOrientationSense = () => {
 const handleOrientation = (event) => {
     //console.log(event.alpha, event.beta, event.gamma)
     var h = '';
-    if (event.gamma < -10 && event.gamma > -25) h = "left"
-    else if (event.gamma < -25) h = "hard left"
-    else if (event.gamma > 10 && event.gamma < 25) h = "right"
-    else if (event.gamma > 25) h = "hard right"
-    else h = "no tilt"
+    if (event.gamma < -10 && event.gamma > -25) {
+      h = "left";
+      status.turn = "l";
+    }
+    else if (event.gamma < -25) {
+      h = "hard left";
+      status.turn ="hl";
+    }
+    else if (event.gamma > 10 && event.gamma < 25) {
+      h = "right"
+      status.turn = "r";
+    }
+    else if (event.gamma > 25) {
+      h = "hard right"
+      status.turn = "hr";
+    }
+    else {
+      h = "no tilt";
+      status.turn = "n";
+    }
     if(event.beta < -5) {
       h += " up";
       glide[1] = 1.25
@@ -174,6 +190,42 @@ const handleOrientation = (event) => {
       glide[2] = 1;
     }
     document.getElementById('turn').innerHTML = h
+}
+
+function plane_updt() {
+  if(status.elv_ch == "a"){
+    if(status.turn == "r"){
+      plane.src = "planeA_l.svg";
+    }
+    else if(status.turn == "hl"){
+      plane.src = "planeA_hr.svg"
+    }
+    else if (status.turn == "hr") {
+      plane.src = "planeA_hl.svg";
+    }
+    else if (status.turn == "l") {
+      plane.src = "planeA_r.svg"
+    }
+    else plane.src = "planeA.svg"
+  }
+  else if (status.elv_ch == "d"){
+    if(status.turn == "r"){
+      plane.src = "planeD_r.svg";
+    }
+    else if(status.turn == "hl"){
+      plane.src = "planeD_hl.svg"
+    }
+    else if (status.turn == "hr") {
+      plane.src = "planeD_hr.svg";
+    }
+    else if (status.turn == "l") {
+      plane.src = "planeD_l.svg"
+    }
+    else plane.src = "planeD.svg"
+  }
+  else {
+    plane.src = "planeS.svg"
+  }
 }
 const setUpAll = () => {
     setUpInfiniteScroll()
