@@ -18,6 +18,8 @@ const del_time = 0.05*2, density = 1.225, friction_coeff = 0.25;
 var v_p_x = elv = elv_p = v_x = v_y = scroll_speed = 0;
 var v_p_y = 0
 
+var plane = document.getElementById('plane');
+//plane.src = 'planeA.svg'
 
 const setUpInfiniteScroll = () => {
     document.getElementById('canvas').height = screen.height;
@@ -118,8 +120,15 @@ const dashboard_updt = () => {
 const del_elev = () => {
     var elv_pt = elv_p
     elv_p = elv
-    if (elv_pt < elv) return 'Ascending'
-    else if (elv_pt > elv) return 'Descending'
+    if (elv_pt < elv) {
+        plane.src = 'planeA.svg'
+        return 'Ascending'
+    }
+    else if (elv_pt > elv) {
+        plane.src = 'planeD.svg'
+        return 'Descending'
+    }
+    plane.src = 'planeS.svg'
     return "Alt. fixed"
 }
 const info = () => {

@@ -4,6 +4,17 @@
    background-color: antiquewhite;    
     
 }
+#plane_holder{
+    position: fixed;
+    top: 50vh;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+#plane{
+    height: 10vh;
+
+}
 #nerd_info{
     position: fixed;
     font-size: 10px;
