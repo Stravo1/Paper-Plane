@@ -171,7 +171,7 @@ const handleOrientation = (event) => {
       status.turn = "hr";
     }
     else {
-      h = "no h-tilt";
+      h = "no tilt";
       status.turn = "n";
     }
     if(event.beta < -5) {
@@ -189,7 +189,7 @@ const handleOrientation = (event) => {
       glide[2] = 5
     }
     else {
-      h += " | no v-tilt";
+      h += " | no tilt";
       glide[1] = 0.75;
       glide[2] = 1;
     }
