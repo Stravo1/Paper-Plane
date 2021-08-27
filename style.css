@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+<<<<<<< HEAD
 #canvas {
    background-color: antiquewhite;    
     
@@ -15,6 +16,8 @@
     height: 10vh;
 
 }
+=======
+>>>>>>> ae8d07420e5770588f32dd9e8cc3b4ee11826251
 #nerd_info{
     position: fixed;
     font-size: 10px;
